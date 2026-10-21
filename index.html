@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Valeria ♡ | Mafer</title>
+
+<style>
+*{box-sizing:border-box}
+
+:root{
+  --fondo:#f8eef6;
+  --rosa:#e8bfd8;
+  --vino:#a92e59;
+  --texto:#563d50;
+  --blanco:#fffafd;
+}
+
+body{
+  margin:0;
+  background:var(--fondo);
+  color:var(--texto);
+  font-family:Georgia,"Times New Roman",serif;
+}
+
+.pagina{
+  display:none;
+  min-height:100vh;
+  padding:35px 22px;
+  text-align:center;
+  align-items:center;
+  justify-content:center;
+}
+
+.pagina.activa{
+  display:flex;
+  animation:aparecer .6s ease;
+}
+
+.contenido{
+  width:100%;
+  max-width:430px;
+  margin:auto;
+}
+
+.marca{
+  font-family:Arial,sans-serif;
+  font-size:14px;
+  letter-spacing:3px;
+  color:#9c577d;
+  margin-bottom:45px;
+}
+
+.mini{
+  font-family:Arial,sans-serif;
+  font-size:10px;
+  letter-spacing:3px;
+  line-height:2;
+  text-transform:uppercase;
+  color:#9b7a92;
+}
+
+h1{
+  font-size:clamp(36px,9vw,48px);
+  font-weight:normal;
+  margin:15px 0;
+}
+
+h2{
+  font-size:30px;
+  font-weight:normal;
+  margin:15px 0 22px;
+}
+
+p{
+  font-size:15px;
+  line-height:1.9;
+}
+
+.nombre{color:var(--vino)}
+.cita{font-style:italic;color:#82677c}
+
+.separador{
+  height:1px;
+  background:#e3c8d9;
+  margin:25px 0;
+}
+
+.boton{
+  border:none;
+  background:var(--vino);
+  color:white;
+  border-radius:25px;
+  padding:14px 22px;
+  margin:12px 4px;
+  font-family:Arial,sans-serif;
+  font-size:12px;
+  letter-spacing:1px;
+  cursor:pointer;
+}
+
+.boton.claro{
+  background:#ead0e1;
+  color:#74465f;
+}
+
+.corazon{
+  background:transparent;
+  border:none;
+  width:150px;
+  height:125px;
+  cursor:pointer;
+  margin:25px auto 5px;
+  padding:0;
+}
+
+#corazonIcono{
+  display:inline-block;
+  font-size:80px;
+  color:#d8a9c0;
+  transition:color .25s,transform .25s;
+}
+
+#instruccionCorazon{
+  font-family:Arial,sans-serif;
+  font-size:12px;
+  color:#9b577b;
+}
+
+.portada{
+  min-height:230px;
+  background:linear-gradient(135deg,#d9a5c5,#a65c86);
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:25px;
+  margin:-35px -22px 30px;
+}
+
+.portada h1{font-size:37px}
+.portada p{font-size:10px;letter-spacing:2px;color:white}
+
+.cancion{
+  padding:25px 15px;
+  background:#fff8fc;
+  margin:25px 0;
+  box-shadow:0 8px 25px #a92e5910;
+}
+
+.disco{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  margin:0 auto 18px;
+  background:linear-gradient(135deg,#d7a5c5,#f5dbe9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+  color:#8d3a67;
+}
+
+audio{
+  display:block;
+  width:100%;
+  max-width:330px;
+  margin:20px auto;
+}
+
+.carrusel{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  margin:25px 0 10px;
+}
+
+.carrusel img{
+  width:78%;
+  height:330px;
+  object-fit:cover;
+  border-radius:4px;
+  box-shadow:0 8px 25px #a92e5920;
+  transition:opacity .25s;
+}
+
+.flecha-carrusel{
+  border:none;
+  background:transparent;
+  color:var(--vino);
+  font-size:22px;
+  padding:5px;
+  cursor:pointer;
+}
+
+.puntos{
+  color:var(--vino);
+  letter-spacing:5px;
+  margin:15px 0;
+  font-size:13px;
+}
+
+.numero-foto{
+  font-family:Arial,sans-serif;
+  font-size:11px;
+  color:#9b7a92;
+}
+
+.carta{
+  text-align:left;
+  font-style:italic;
+  line-height:2;
+}
+
+.evento{
+  text-align:left;
+  border-left:1px solid #c98eae;
+  padding:5px 0 22px 18px;
+  margin-left:10px;
+}
+
+.evento h3{
+  font-size:19px;
+  font-weight:normal;
+  margin:8px 0;
+}
+
+.evento p{font-size:13px}
+
+.punto{
+  color:var(--vino);
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+.nota{
+  background:#fff8fc;
+  padding:16px;
+  margin:20px 0;
+  text-align:left;
+  line-height:1.8;
+  border-left:3px solid var(--rosa);
+}
+
+.pregunta{
+  text-align:left;
+  padding:17px 0;
+  border-bottom:1px solid #e5ccdc;
+}
+
+.opcion{
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:13px;
+  margin:8px 0;
+  background:#fff8fc;
+  border:1px solid #ead3e1;
+  color:var(--texto);
+  font-family:Arial,sans-serif;
+  cursor:pointer;
+}
+
+.resultado{
+  font-size:13px;
+  color:var(--vino);
+  display:none;
+  line-height:1.7;
+  padding:10px 0;
+}
+
+.firma{
+  color:var(--vino);
+  font-size:23px;
+  font-style:italic;
+  margin:25px 0;
+}
+
+.pie{
+  font-family:Arial,sans-serif;
+  color:#ad7896;
+  font-size:11px;
+}
+
+@keyframes aparecer{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:380px){
+  .carrusel img{height:260px}
+  h2{font-size:26px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PANTALLA 1 -->
+<section class="pagina activa" id="p1">
+<div class="contenido">
+  <div class="marca">Con cariño ♡</div>
+  <div class="mini">UN PEQUEÑO REGALO PARA</div>
+  <h1 class="nombre">Valeria</h1>
+  <p>De Mafer 💗</p>
+  <div class="separador"></div>
+  <p class="cita">"Qué bonito es coincidir con alguien que se convierte en una persona especial en tu vida."</p>
+  <p id="instruccionCorazon">Toca el corazón para llenarlo ♡</p>
+  <button class="corazon" id="corazon" onclick="llenarCorazon()" aria-label="Llenar el corazón">
+    <span id="corazonIcono">♡</span>
+  </button>
+  <p class="pie">Un detalle hecho especialmente para ti.</p>
+</div>
+</section>
+
+<!-- PANTALLA 2 -->
+<section class="pagina" id="p2">
+<div class="contenido">
+  <div class="portada">
+    <div class="mini" style="color:white">UNA SORPRESA PARA TI</div>
+    <h1>¡Hola, Vale! ♡</h1>
+    <p>UN REGALITO DE TU MEJOR AMIGA</p>
+  </div>
+  <h2>Me alegra que estés aquí</h2>
+  <p>Preparé esta pequeña página para recordarte lo mucho que valoro nuestra amistad.</p>
+  <p>Encontrarás fotos, recuerdos y unas palabras que quería dedicarte. Espero que te guste. 🌷</p>
+  <button class="boton" onclick="ir(3)">Comenzar ♡</button>
+</div>
+</section>
+
+<!-- PANTALLA 3: CANCIÓN Y AUDIO PERSONAL -->
+<section class="pagina" id="p3">
+<div class="contenido">
+  <div class="mini">UNA CANCIÓN PARA NOSOTRAS</div>
+  <h2>Nuestra canción 🎶</h2>
+  <p>Hay canciones que nos hacen recordar a las personas que queremos y los momentos que compartimos.</p>
+
+  <div class="cancion">
+    <div class="disco">♫</div>
+    <p><strong>Una canción para mi mejor amiga</strong></p>
+    <p class="mini">MAFER Y VALERIA</p>
+    <a class="boton" href="https://youtu.be/SUL79zqyYwM?si=7u4ebWIfVIOv8JoE" target="_blank" rel="noopener" style="display:inline-block;text-decoration:none">
+      ▶ ESCUCHAR CANCIÓN
+    </a>
+  </div>
+
+  <div class="cancion">
+    <div class="disco">🎧</div>
+    <h3>Un audio para ti, Vale 💕</h3>
+    <p>Quería dejarte un mensajito especial.</p>
+
+    <!-- COLOCA TU ARCHIVO EN LA CARPETA audio -->
+    
+    <audio controls>
+    <source src="mi-audio.mp3" type="audio/mpeg">
+    Tu navegador no puede reproducir este audio.
+</audio>
+
+    <p class="mini">UN MENSAJE HECHO CON CARIÑO</p>
+  </div>
+
+  <button class="boton" onclick="ir(4)">Continuar →</button>
+</div>
+</section>
+
+<!-- PANTALLA 4: FOTOS -->
+<section class="pagina" id="p4">
+<div class="contenido">
+  <div class="mini">NUESTRA GALERÍA</div>
+  <h2>Momentos que no se borran</h2>
+  <p>Cada foto guarda un pedacito de nuestra historia. ¡Vamos a recordar! 📸</p>
+  <div class="carrusel">
+    <button class="flecha-carrusel" onclick="cambiarFoto(-1)">❮</button>
+    <img id="fotoCarrusel" src="img/foto1.jpg" alt="Recuerdo con mi mejor amiga">
+    <button class="flecha-carrusel" onclick="cambiarFoto(1)">❯</button>
+  </div>
+  <div class="puntos" id="puntosCarrusel">● ○ ○ ○ ○</div>
+  <p class="numero-foto" id="numeroFoto">Foto 1 de 5</p>
+  <p class="cita">Ojalá nos queden muchísimas fotos por tomar.</p>
+  <button class="boton" onclick="ir(5)">Leer mi carta →</button>
+</div>
+</section>
+
+<!-- PANTALLA 5: CARTA -->
+<section class="pagina" id="p5">
+<div class="contenido">
+  <div class="mini">UNAS PALABRAS PARA TI</div>
+  <h2>Para mi mejor amiga</h2>
+  <div class="separador"></div>
+  <div class="carta">
+    <p>Vale:</p>
+    <p>Quería hacerte algo especial para recordarte lo importante que eres para mí. Gracias por las risas, las pláticas, las ocurrencias y todos esos momentos que hacen nuestra amistad tan bonita.</p>
+    <p>Me alegra tener una amiga con quien compartir mis días, contar mis cosas y crear recuerdos que algún día nos harán reír otra vez.</p>
+    <p>No necesitamos tener una amistad perfecta. Para mí, lo bonito es poder hablar con confianza, apoyarnos, escucharnos y respetarnos incluso cuando pensamos diferente.</p>
+    <p>Deseo que cumplas tus sueños, que nunca te falten motivos para sonreír y que siempre recuerdes lo valiosa que eres.</p>
+    <p>Ojalá nos queden muchas aventuras, salidas, fotos, anécdotas y momentos que algún día recordemos con una sonrisa.</p>
+    <p>Gracias por ser parte de mi vida. Te quiero muchísimo. 💗</p>
+    <p>Con mucho cariño,</p>
+  </div>
+  <div class="firma">Mafer ♡</div>
+  <button class="boton" onclick="ir(6)">Nuestra historia →</button>
+</div>
+</section>
+
+<!-- PANTALLA 6: RECUERDOS -->
+<section class="pagina" id="p6">
+<div class="contenido">
+  <div class="mini">NUESTRA HISTORIA</div>
+  <h2>Pequeños momentos, grandes recuerdos</h2>
+  <p>Cada amistad tiene una historia propia. Estos son algunos momentos que podemos recordar.</p>
+  <div class="separador"></div>
+
+  <div class="evento">
+    <div class="punto">♡ EL COMIENZO</div>
+    <h3>Cuando nos conocimos</h3>
+    <p>El inicio de una amistad que poco a poco fue creando momentos para recordar.</p>
+  </div>
+  <div class="evento">
+    <div class="punto">♡ LAS RISAS</div>
+    <h3>Esas ocurrencias nuestras</h3>
+    <p>Los momentos en los que cualquier tontería termina convirtiéndose en una gran risa.</p>
+  </div>
+  <div class="evento">
+    <div class="punto">♡ EL APOYO</div>
+    <h3>Estar la una para la otra</h3>
+    <p>Escucharnos, aconsejarnos y acompañarnos cuando lo necesitamos.</p>
+  </div>
+  <div class="evento">
+    <div class="punto">♡ LO QUE VIENE</div>
+    <h3>Muchos recuerdos más</h3>
+    <p>Todavía nos quedan muchas historias por vivir y fotos por tomar.</p>
+  </div>
+
+  <button class="boton" onclick="ir(7)">Una última sorpresa →</button>
+</div>
+</section>
+
+<!-- PANTALLA 7 -->
+<section class="pagina" id="p7">
+<div class="contenido">
+  <div class="mini">UN RECUERDO ESPECIAL</div>
+  <h2>Esta amistad es un regalo</h2>
+  <p>No importa si el recuerdo es de una salida, una plática o un día cualquiera: lo importante es lo que significa para nosotras.</p>
+  <div class="cancion">
+    <div class="disco">🌷</div>
+    <p><strong>Para mi mejor amiga</strong></p>
+    <p class="cita">Gracias por los momentos que ya vivimos y por todos los que todavía nos esperan.</p>
+  </div>
+  <button class="boton" onclick="ir(8)">Seguir ♡</button>
+</div>
+</section>
+
+<!-- PANTALLA 8 -->
+<section class="pagina" id="p8">
+<div class="contenido">
+  <div class="mini">UN MENSAJITO PARA TI</div>
+  <div style="font-size:70px;color:#a92e59;margin:20px">♡</div>
+  <h2>¿Sabes qué, Vale?</h2>
+  <p>Me da gusto que formes parte de mi vida. Gracias por cada momento y por las cosas bonitas que compartimos como amigas.</p>
+  <p class="cita">"Las mejores amistades hacen más bonitos hasta los días comunes."</p>
+  <button class="boton" onclick="ir(9)">Un pequeño juego →</button>
+</div>
+</section>
+
+<!-- PANTALLA 9: JUEGO -->
+<section class="pagina" id="p9">
+<div class="contenido">
+  <div class="mini">UN JUEGUITO PARA TI</div>
+  <h2>¿Cuánto conoces nuestra amistad?</h2>
+  <p>Elige una respuesta y descubre tu mensajito. 💗</p>
+
+  <div class="pregunta">
+    <p><strong>1. ¿Quién hizo este regalo?</strong></p>
+    <button class="opcion" onclick="responder('r1','¡Correcto! Mafer lo hizo pensando en ti. 💗')">Mafer</button>
+    <button class="opcion" onclick="responder('r1','¡Inténtalo de nuevo! Mira la dedicatoria. 🎀')">Valeria</button>
+    <div class="resultado" id="r1"></div>
+  </div>
+
+  <div class="pregunta">
+    <p><strong>2. ¿Qué deseo para nuestra amistad?</strong></p>
+    <button class="opcion" onclick="responder('r2','¡Sí! Que tengamos muchos años de amistad y recuerdos bonitos. 🌷')">Que dure mucho tiempo</button>
+    <button class="opcion" onclick="responder('r2','¡No! Quiero que nuestra amistad siga creciendo. 💕')">Que dejemos de hablar</button>
+    <div class="resultado" id="r2"></div>
+  </div>
+
+  <div class="pregunta">
+    <p><strong>3. ¿Qué quiero que recuerdes?</strong></p>
+    <button class="opcion" onclick="responder('r3','¡Exacto! Eres una amiga muy especial para mí. 💗')">Que te quiero mucho como amiga</button>
+    <button class="opcion" onclick="responder('r3','¡Inténtalo otra vez! Esta página es para celebrar nuestra amistad. 🌸')">Que no eres importante</button>
+    <div class="resultado" id="r3"></div>
+  </div>
+
+  <button class="boton" onclick="ir(10)">Ver mensaje final →</button>
+</div>
+</section>
+
+<!-- PANTALLA 10: FINAL -->
+<section class="pagina" id="p10">
+<div class="contenido">
+  <div class="portada">
+    <div class="mini" style="color:white">PARA ALGUIEN ESPECIAL</div>
+    <h1>Gracias por tu amistad, Vale ♡</h1>
+    <p>DE MAFER PARA VALERIA</p>
+  </div>
+  <p>Espero que este regalo te haya sacado una sonrisa y que te recuerde lo bonita que es nuestra amistad.</p>
+  <p>Te deseo mucha felicidad, sueños cumplidos y miles de motivos para sonreír. Nunca dejes de ser tú.</p>
+  <p>Gracias por formar parte de mi vida. ¡Vamos por muchísimos recuerdos más! 🌷</p>
+  <div class="separador"></div>
+  <h2 class="nombre">Te quiero mucho, mejor amiga 💗</h2>
+  <div class="firma">Con cariño, Mafer ♡</div>
+  <button class="boton claro" onclick="ir(1)">Volver al inicio ↺</button>
+</div>
+</section>
+
+<script>
+function ir(numero){
+  document.querySelectorAll(".pagina").forEach(function(pagina){
+    pagina.classList.remove("activa");
+  });
+  document.getElementById("p"+numero).classList.add("activa");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+let nivelCorazon=0;
+
+function llenarCorazon(){
+  if(nivelCorazon>=5)return;
+  nivelCorazon++;
+
+  const icono=document.getElementById("corazonIcono");
+  const instruccion=document.getElementById("instruccionCorazon");
+
+  icono.textContent="♥";
+  icono.style.color=`rgb(${190+nivelCorazon*13},${150-nivelCorazon*23},${175-nivelCorazon*18})`;
+  icono.style.transform=`scale(${1+nivelCorazon*0.1})`;
+
+  instruccion.textContent=nivelCorazon<5
+    ?"¡Sigue tocando el corazón! "+nivelCorazon+"/5"
+    :"¡El corazón está lleno! Abriendo tu regalo... 💗";
+
+  if(nivelCorazon===5){
+    setTimeout(function(){ir(2)},900);
+  }
+}
+
+const fotosCarrusel=[
+  "img/foto1.jpg",
+  "img/foto2.jpg",
+  "img/foto3.jpg",
+  "img/foto4.jpg",
+  "img/foto5.jpg"
+];
+
+let indiceFoto=0;
+
+function cambiarFoto(direccion){
+  indiceFoto=(indiceFoto+direccion+fotosCarrusel.length)%fotosCarrusel.length;
+
+  const imagen=document.getElementById("fotoCarrusel");
+  imagen.style.opacity="0.3";
+
+  setTimeout(function(){
+    imagen.src=fotosCarrusel[indiceFoto];
+    imagen.style.opacity="1";
+  },120);
+
+  document.getElementById("numeroFoto").textContent=
+    "Foto "+(indiceFoto+1)+" de "+fotosCarrusel.length;
+
+  document.getElementById("puntosCarrusel").textContent=
+    fotosCarrusel.map(function(_,i){
+      return i===indiceFoto?"●":"○";
+    }).join(" ");
+}
+
+function responder(id,mensaje){
+  const resultado=document.getElementById(id);
+  resultado.textContent=mensaje;
+  resultado.style.display="block";
+}
+</script>
+
+</body>
+</html>
